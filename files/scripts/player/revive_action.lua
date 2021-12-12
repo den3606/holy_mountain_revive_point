@@ -22,7 +22,6 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       -- 蘇生用スクリプトをPlayerから解除
       local player_entity = get_player_entity()
       local revive_action_model = tonumber(GlobalsGetValue("HOLY_MOUNTAIN_REVIVE_POINT__REVIVE_ACTION_ID"))
-
       EntityRemoveComponent(player_entity, revive_action_model)
     end
   end

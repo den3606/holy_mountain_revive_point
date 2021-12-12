@@ -33,7 +33,6 @@ function register_revive_point(entity_item, pos_x, pos_y)
     local revive_action_model = EntityAddComponent2(player_entity, "LuaComponent", {
       script_damage_received = "mods/holy_mountain_revive_point/files/scripts/player/revive_action.lua",
     })
-    print("add player : revivea_action.lua" .. tostring(revive_action_model))
     GlobalsSetValue("HOLY_MOUNTAIN_REVIVE_POINT__REVIVE_ACTION_ID", tostring(revive_action_model))
   end
 
