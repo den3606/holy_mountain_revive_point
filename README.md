@@ -1,8 +1,3 @@
-# TODO
+# Holy mountain revive point
 
-- リファクタリング
-  - ソースを直す
-  - dataを直接上書きしている問題を修正する
-- 復活時に効果音、エフェクトを入れる
-- 階層を降りるごとに金額を上げる（要調整）
-- 金額を自分で決められるようにする
+This MOD add revive point in holy mountain.
