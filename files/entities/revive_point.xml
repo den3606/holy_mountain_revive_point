@@ -1,0 +1,7 @@
+<Entity tags="teleportable_NOT,ui_use_raw_name">
+  <LuaComponent
+		execute_on_added="1"
+		execute_every_n_frame="-1"
+		script_source_file="mods/holy_mountain_revive_point/files/scripts/revival/revive_point.lua" >
+	</LuaComponent>
+</Entity>
