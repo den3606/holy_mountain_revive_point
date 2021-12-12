@@ -27,34 +27,3 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
     end
   end
 end
-
--- function damage_received(damage, x, y, entity_thats_responsible, critical_hit_chance)
---   print("====damage_about_to_be_received====")
---   print(tostring(damage))
---   print(tostring(x))
---   print(tostring(y))
---   print(tostring(entity_thats_responsible))
---   print(tostring(critical_hit_chance))
-
---   local entity = GetUpdatedEntityID()
---   for _, damage_model in ipairs(EntityGetComponent(entity, "DamageModelComponent") or {}) do
---     local this_hp = ComponentGetValue2( damage_model, "hp" )
---     print("this hp: ".. tostring(this_hp))
---     print("damage: ".. tostring(damage))
---     print("judge: ".. tostring(this_hp <damage))
---     -- 有効化の判定を追加する
---     if this_hp < damage then
---       local max_hp = ComponentGetValue2(damage_model, "max_hp")
---       ComponentSetValue2(damage_model, "hp", max_hp)
---       damage = 0
---       local pos_x, pos_y = EntityGetTransform( entity )
---       revived_pos_x = tonumber(GlobalsGetValue("HOLY_MOUNTAIN_REVIVE_POINT__REVIVE_POINT_X", pos_x))
---       revived_pos_y = tonumber(GlobalsGetValue("HOLY_MOUNTAIN_REVIVE_POINT__REVIVE_POINT_Y", pos_y))
---       GameSetCameraPos(revived_pos_x, revived_pos_y)
---       EntityApplyTransform(entity, revived_pos_x, revived_pos_y)
---       GlobalsSetValue("HOLY_MOUNTAIN_REVIVE_POINT__REVIVE_POINT_X", "")
---       GlobalsSetValue("HOLY_MOUNTAIN_REVIVE_POINT__REVIVE_POINT_Y", "")
---     end
---   end
---   return damage, critical_hit_chance
--- end

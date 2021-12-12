@@ -31,5 +31,3 @@ if (costsprite_comp ~= nil) then
 end
 
 ComponentSetValue(itemcost_comp, "cost", tostring(cost))
-
--- ComponentSetMetaCustom( ingestion_component, "ingestible_materials", values)
