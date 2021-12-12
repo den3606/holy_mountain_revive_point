@@ -19,3 +19,7 @@ max_line_length = 100
 
 [*.md]
 trim_trailing_whitespace = false
+
+[{workshop_id.txt,mod_id.txt}]
+insert_final_newline = false
+trim_trailing_whitespace = true
