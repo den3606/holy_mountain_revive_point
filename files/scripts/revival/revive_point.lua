@@ -2,6 +2,11 @@ function collision_trigger(player_entity)
   GamePrintImportant("YOU ARE REVIVED", "God bless you")
   GlobalsSetValue("holy_mountain_revive_point.is_saved", "0")
 
+  -- Delete Area Damage
+  while EntityGetWithName("workshop_altar") ~= 0 do
+    EntityKill(EntityGetWithName("workshop_altar"))
+  end
+
   for _, damage_model in ipairs(EntityGetComponent(player_entity, "DamageModelComponent") or {}) do
     -- HPをフルヘルスにする
     local max_hp = ComponentGetValue2(damage_model, "max_hp")
