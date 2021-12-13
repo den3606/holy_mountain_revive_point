@@ -3,7 +3,7 @@ local itemcost_comp = EntityGetFirstComponent(entity_id, "ItemCostComponent")
 local costsprite_comp = EntityGetComponent(entity_id, "SpriteComponent", "shop_cost")
 
 local revive_count = tonumber(GlobalsGetValue("holy_mountain_revive_point.revive_count", "0"))
-local cost = 100 + revive_count * 100
+local cost = (ModSettingGet("holy_mountain_revive_point.REVIVAL_ALTAR_COST") * 4) * (revive_count + 1)
 
 if (costsprite_comp ~= nil) then
   local comp = costsprite_comp[1]
