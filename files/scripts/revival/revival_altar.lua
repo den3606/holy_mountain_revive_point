@@ -7,6 +7,8 @@ function item_pickup(entity_item, entity_who_picked, item_name)
   local revive_count = tonumber(GlobalsGetValue("holy_mountain_revive_point.revive_count", "0"))
   GlobalsSetValue("holy_mountain_revive_point.revive_count", tostring(revive_count + 1))
 
+  GamePrintImportant( "You swore to God" )
+
   register_revive_point(entity_item, pos_x, pos_y)
 
   -- spawn a new one
