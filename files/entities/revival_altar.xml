@@ -7,7 +7,12 @@
 			>
 		</SpriteComponent>
   </Base>
+  <UIInfoComponent
+		name="Revival altar"
+	>
+	</UIInfoComponent>
   <ItemComponent
+    item_name="Revival altar"
 		play_spinning_animation="0"
 		play_pick_sound="0"
 		stats_count_as_item_pick_up="0"
