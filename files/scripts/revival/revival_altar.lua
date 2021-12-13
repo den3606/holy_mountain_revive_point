@@ -4,8 +4,8 @@ function item_pickup(entity_item, entity_who_picked, item_name)
   local pos_x, pos_y = EntityGetTransform(entity_item)
 
   -- 復活のカウント
-  local revive_count = tonumber(GlobalsGetValue("HOLY_MOUNTAIN_REVIVE_POINT__REVIVE_COUNT", "0"))
-  GlobalsSetValue("HOLY_MOUNTAIN_REVIVE_POINT__REVIVE_COUNT", tostring(revive_count + 1))
+  local revive_count = tonumber(GlobalsGetValue("holy_mountain_revive_point.revive_count", "0"))
+  GlobalsSetValue("holy_mountain_revive_point.revive_count", tostring(revive_count + 1))
 
   register_revive_point(entity_item, pos_x, pos_y)
 
@@ -17,7 +17,7 @@ end
 
 function register_revive_point(entity_item, pos_x, pos_y)
   -- 登録する
-  local is_saved = tonumber(GlobalsGetValue("HOLY_MOUNTAIN_REVIVE_POINT__IS_SAVED", "0")) == 1
+  local is_saved = tonumber(GlobalsGetValue("holy_mountain_revive_point.is_saved", "0")) == 1
   print(tostring(is_saved))
   if is_saved then
     -- 蘇生ポイントを上書きする
@@ -26,17 +26,17 @@ function register_revive_point(entity_item, pos_x, pos_y)
       EntityKill(tonumber(newest_revive_point))
     end
   else
-    GlobalsSetValue("HOLY_MOUNTAIN_REVIVE_POINT__IS_SAVED", "1")
+    GlobalsSetValue("holy_mountain_revive_point.is_saved", "1")
 
     -- Playerにreviveのアクションを追加する
     local player_entity = get_player_entity()
     local revive_action_model = EntityAddComponent2(player_entity, "LuaComponent", {
       script_damage_received = "mods/holy_mountain_revive_point/files/scripts/player/revive_action.lua",
     })
-    GlobalsSetValue("HOLY_MOUNTAIN_REVIVE_POINT__REVIVE_ACTION_ID", tostring(revive_action_model))
+    GlobalsSetValue("holy_mountain_revive_point.revive_action_id", tostring(revive_action_model))
   end
 
   -- 蘇生ポイントを保存
-  GlobalsSetValue("HOLY_MOUNTAIN_REVIVE_POINT__NEWEST_REVIVE_POSITION_X", tostring(pos_x))
-  GlobalsSetValue("HOLY_MOUNTAIN_REVIVE_POINT__NEWEST_REVIVE_POSITION_Y", tostring(pos_y - 1))
+  GlobalsSetValue("holy_mountain_revive_point.newest_revive_pos_x", tostring(pos_x))
+  GlobalsSetValue("holy_mountain_revive_point.newest_revive_pos_y", tostring(pos_y - 1))
 end

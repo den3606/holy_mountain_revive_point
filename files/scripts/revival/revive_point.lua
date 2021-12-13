@@ -2,8 +2,8 @@ dofile_once("mods/holy_mountain_revive_point/files/scripts/lib/utilities.lua")
 local player_entity = get_player_entity()
 local revive_point_entity = GetUpdatedEntityID()
 
-local is_revived = tonumber(GlobalsGetValue("HOLY_MOUNTAIN_REVIVE_POINT__IS_REVIVED", "0")) == 1
-local is_saved = tonumber(GlobalsGetValue("HOLY_MOUNTAIN_REVIVE_POINT__IS_SAVED", "0")) == 1
+local is_revived = tonumber(GlobalsGetValue("holy_mountain_revive_point.is_revived", "0")) == 1
+local is_saved = tonumber(GlobalsGetValue("holy_mountain_revive_point.is_saved", "0")) == 1
 
 if is_revived and is_saved then
   -- 蘇生ポイントにカメラとplayerを移動
@@ -13,8 +13,8 @@ if is_revived and is_saved then
 
   for _, damage_model in ipairs(EntityGetComponent(player_entity, "DamageModelComponent") or {}) do
     -- 蘇生をリセット
-    GlobalsSetValue("HOLY_MOUNTAIN_REVIVE_POINT__IS_REVIVED", "0")
-    GlobalsSetValue("HOLY_MOUNTAIN_REVIVE_POINT__IS_SAVED", "0")
+    GlobalsSetValue("holy_mountain_revive_point.is_revived", "0")
+    GlobalsSetValue("holy_mountain_revive_point.is_saved", "0")
   end
 
   EntityAddComponent2(player_entity, "LuaComponent", {

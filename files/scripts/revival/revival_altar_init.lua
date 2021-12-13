@@ -2,7 +2,7 @@ local entity_id = GetUpdatedEntityID()
 local itemcost_comp = EntityGetFirstComponent(entity_id, "ItemCostComponent")
 local costsprite_comp = EntityGetComponent(entity_id, "SpriteComponent", "shop_cost")
 
-local revive_count = tonumber(GlobalsGetValue("HOLY_MOUNTAIN_REVIVE_POINT__REVIVE_COUNT", "0"))
+local revive_count = tonumber(GlobalsGetValue("holy_mountain_revive_point.revive_count", "0"))
 local cost = 100 + revive_count * 100
 
 if (costsprite_comp ~= nil) then
