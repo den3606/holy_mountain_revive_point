@@ -19,6 +19,8 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
         EntityLoad("mods/holy_mountain_revive_point/files/entities/revive_point.xml", pos_x, pos_y - 1)
       end
 
+      GamePrintImportant("YOU ARE REVIVED", "God bless you")
+
       -- 蘇生用スクリプトをPlayerから解除
       local player_entity = get_player_entity()
       local revive_action_model = tonumber(GlobalsGetValue("holy_mountain_revive_point.revive_action_id"))
