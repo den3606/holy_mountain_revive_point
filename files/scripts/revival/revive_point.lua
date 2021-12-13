@@ -1,25 +1,13 @@
-dofile_once("mods/holy_mountain_revive_point/files/scripts/lib/utilities.lua")
-local player_entity = get_player_entity()
-local revive_point_entity = GetUpdatedEntityID()
-
-local is_revived = tonumber(GlobalsGetValue("holy_mountain_revive_point.is_revived", "0")) == 1
-local is_saved = tonumber(GlobalsGetValue("holy_mountain_revive_point.is_saved", "0")) == 1
-
-if is_revived and is_saved then
-  -- 蘇生ポイントにカメラとplayerを移動
-  local pos_x, pos_y = EntityGetTransform(revive_point_entity)
-  EntityApplyTransform(player_entity, pos_x, pos_y)
-  GameSetCameraPos(pos_x, pos_y)
+function collision_trigger(player_entity)
+  GamePrintImportant("YOU ARE REVIVED", "God bless you")
+  GlobalsSetValue("holy_mountain_revive_point.is_saved", "0")
 
   for _, damage_model in ipairs(EntityGetComponent(player_entity, "DamageModelComponent") or {}) do
-    -- 蘇生をリセット
-    GlobalsSetValue("holy_mountain_revive_point.is_revived", "0")
-    GlobalsSetValue("holy_mountain_revive_point.is_saved", "0")
-  end
+    -- HPをフルヘルスにする
+    local max_hp = ComponentGetValue2(damage_model, "max_hp")
+    ComponentSetValue2(damage_model, "hp", max_hp)
 
-  EntityAddComponent2(player_entity, "LuaComponent", {
-    execute_every_n_frame = 30,
-    remove_after_executed = true,
-    script_source_file = "mods/holy_mountain_revive_point/files/scripts/player/healing.lua",
-  })
+    -- 無敵解除
+    ComponentSetValue2(damage_model, "wait_for_kill_flag_on_death", false)
+  end
 end
