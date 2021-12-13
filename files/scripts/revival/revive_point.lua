@@ -15,4 +15,9 @@ function collision_trigger(player_entity)
     -- 無敵解除
     ComponentSetValue2(damage_model, "wait_for_kill_flag_on_death", false)
   end
+
+  local pos_x, pos_y = EntityGetTransform(player_entity)
+
+  GamePlaySound("data/audio/Desktop/misc.bank", "misc/teleport_use", pos_x, pos_y)
+  EntityLoad("mods/holy_mountain_revive_point/files/entities/revival_point_effect.xml", pos_x, pos_y + 2)
 end
