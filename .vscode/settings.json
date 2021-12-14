@@ -1,0 +1,10 @@
+{
+  "Lua.diagnostics.globals": [
+    "spawn_small_enemies",
+    "spawn_big_enemies",
+    "item_pickup",
+    "get_player_entity",
+    "collision_trigger",
+    "spawn_revival_altar"
+  ]
+}
