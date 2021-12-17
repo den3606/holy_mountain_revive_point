@@ -1,6 +1,6 @@
 <Mod
 	name="Holy mountain revive point"
   tags="gameplay,quality of life"
-  dont_upload_files="MEMO.md|.editorconfig|LICENSE.md"
+  dont_upload_files="MEMO.md|.editorconfig|LICENSE.md|resource/menu_banner_background.png|resource/menu_banner_overlay.png"
 >
 </Mod>
