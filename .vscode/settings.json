@@ -5,6 +5,8 @@
     "item_pickup",
     "get_player_entity",
     "collision_trigger",
-    "spawn_revival_altar"
+    "spawn_revival_altar",
+    "release",
+    "init"
   ]
 }

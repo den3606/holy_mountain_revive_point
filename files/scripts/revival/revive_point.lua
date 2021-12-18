@@ -7,14 +7,13 @@ function collision_trigger(player_entity)
     EntityKill(EntityGetWithName("workshop_altar"))
   end
 
-  for _, damage_model in ipairs(EntityGetComponent(player_entity, "DamageModelComponent") or {}) do
-    -- HPをフルヘルスにする
-    local max_hp = ComponentGetValue2(damage_model, "max_hp")
-    ComponentSetValue2(damage_model, "hp", max_hp)
-
-    -- 無敵解除
-    ComponentSetValue2(damage_model, "wait_for_kill_flag_on_death", false)
-  end
+  -- 無敵時間さん？！(5f * 24 = 120f = 2s)
+  EntityAddComponent2(player_entity, "LuaComponent", {
+    script_source_file = "mods/holy_mountain_revive_point/files/scripts/player/invincible_action.lua",
+    call_init_function = true,
+    execute_every_n_frame = 5,
+    execute_times = 24,
+  })
 
   local pos_x, pos_y = EntityGetTransform(player_entity)
   local for_stack = 2
