@@ -23,6 +23,36 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
         pos_x = tonumber(pos_x)
         pos_y = tonumber(pos_y) - FOR_UNSTACK
 
+        -- 一番近い聖なる山に通り抜けポイントを作る
+        -- FIXME:リストはハードコーディングしているが、動的に取りたい
+        local position_list = {
+          {-512, 1024},
+          {-512, 2560},
+          {-512, 4608},
+          {-512, 6144},
+          {-512, 8192},
+          {-512, 10240},
+        }
+
+        local index_of_near = 0
+        local min_distance = 0
+        for k, v in pairs(position_list) do
+          local dx = pos_x - v[1]
+          local dy = pos_y - v[2]
+          local distance = math.sqrt( dx * dx + dy * dy )
+
+          if k == 1 then
+            index_of_near = 1
+            min_distance = distance
+          elseif distance < min_distance then
+            index_of_near = k
+            min_distance = distance
+          end
+        end
+        -- 穴開け用のbiomeをロードする
+        LoadPixelScene("mods/holy_mountain_revive_point/files/biome_impl/temple/altar.png", "mods/holy_mountain_revive_point/files/biome_impl/temple/altar_visual.png", -512, position_list[index_of_near][2] - 40 + 300, "", true)
+        LoadPixelScene("mods/holy_mountain_revive_point/files/biome_impl/temple/altar_right.png", "mods/holy_mountain_revive_point/files/biome_impl/temple/altar_right_visual.png", 0, position_list[index_of_near][2] - 40 + 300, "", true)
+
         -- 復活ポイントをロード
         EntityLoad("mods/holy_mountain_revive_point/files/entities/revive_point.xml", pos_x, pos_y)
 
