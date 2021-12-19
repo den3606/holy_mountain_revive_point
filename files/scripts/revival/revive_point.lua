@@ -18,6 +18,9 @@ function collision_trigger(player_entity)
   local pos_x, pos_y = EntityGetTransform(player_entity)
   local for_stack = 2
   pos_y = pos_y + for_stack
+
+  -- Effects
   GamePlaySound("data/audio/Desktop/misc.bank", "misc/teleport_use", pos_x, pos_y)
+  GameScreenshake( 30 )
   EntityLoad("mods/holy_mountain_revive_point/files/entities/revival_point_effect.xml", pos_x, pos_y)
 end
