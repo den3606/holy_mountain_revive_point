@@ -21,6 +21,6 @@ function collision_trigger(player_entity)
 
   -- Effects
   GamePlaySound("data/audio/Desktop/misc.bank", "misc/teleport_use", pos_x, pos_y)
-  GameScreenshake( 30 )
+  GameScreenshake( 130 )
   EntityLoad("mods/holy_mountain_revive_point/files/entities/revival_point_effect.xml", pos_x, pos_y)
 end
