@@ -35,13 +35,13 @@ mod_settings =
 		id = "REVIVAL_ALTAR_COST",
 		ui_name = "COST",
 		ui_description = "Increase of cost When you used revival_altar",
-		value_default = 25,
+		value_default = 100,
 		value_min = 0,
-		value_max = 100,
-    value_display_multiplier = 4,
+		value_max = 400,
+    value_display_multiplier = 1,
 		value_display_formatting = "+ $0 cost / used",
-		scope = MOD_SETTING_SCOPE_RUNTIME,
-	}
+		scope = MOD_SETTING_SCOPE_NEW_GAME,
+	},
 }
 
 -- This function is called to ensure the correct setting values are visible to the game via ModSettingGet(). your mod's settings don't work if you don't have a function like this defined in settings.lua.
