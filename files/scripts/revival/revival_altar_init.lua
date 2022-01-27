@@ -1,9 +1,19 @@
+local function calcCost()
+  local revive_count = tonumber(GlobalsGetValue("holy_mountain_revive_point.revive_count", "0"))
+  local revival_alter_cost = math.floor(ModSettingGet("holy_mountain_revive_point.REVIVAL_ALTAR_COST") + 0.5)
+  local revival_type = ModSettingGet("holy_mountain_revive_point.REVIVAL_ALTAR_COST_TYPE")
+
+  if revival_type == "addition" then
+    return revival_alter_cost * (revive_count + 1)
+  elseif revival_type == "exponentiation" then
+    return revival_alter_cost * (2 ^ revive_count)
+  end
+end
+
 local entity_id = GetUpdatedEntityID()
 local itemcost_comp = EntityGetFirstComponent(entity_id, "ItemCostComponent")
 local costsprite_comp = EntityGetComponent(entity_id, "SpriteComponent", "shop_cost")
-
-local revive_count = tonumber(GlobalsGetValue("holy_mountain_revive_point.revive_count", "0"))
-local cost = math.floor(ModSettingGet("holy_mountain_revive_point.REVIVAL_ALTAR_COST") + 0.5) * (revive_count + 1)
+local cost = calcCost()
 
 if (costsprite_comp ~= nil) then
   local comp = costsprite_comp[1]
