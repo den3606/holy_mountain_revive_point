@@ -6,6 +6,8 @@ print("REVIVE POIT mod init")
 print("===========")
 
 ModLuaFileAppend("data/scripts/biomes/temple_altar_left.lua", "mods/holy_mountain_revive_point/files/scripts/biomes/temple_altar_left.lua")
+ModLuaFileAppend("data/scripts/biomes/boss_victoryroom.lua", "mods/holy_mountain_revive_point/files/scripts/biomes/boss_victoryroom.lua")
+ModLuaFileAppend("data/scripts/biomes/mountain/mountain_floating_island.lua", "mods/holy_mountain_revive_point/files/scripts/biomes/mountain/mountain_floating_island.lua")
 
 local is_dead_poly_player = false
 
