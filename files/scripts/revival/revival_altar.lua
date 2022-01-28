@@ -1,7 +1,7 @@
 dofile_once("mods/holy_mountain_revive_point/files/scripts/lib/utilities.lua")
 
 local function register_revive_point(entity_item, pos_x, pos_y)
-    GlobalsSetValue("holy_mountain_revive_point.is_saved", "1")
+  GlobalsSetValue("holy_mountain_revive_point.is_saved", "1")
   GlobalsSetValue("holy_mountain_revive_point.newest_revive_pos_x", tostring(pos_x))
   GlobalsSetValue("holy_mountain_revive_point.newest_revive_pos_y", tostring(pos_y - 1))
 end
