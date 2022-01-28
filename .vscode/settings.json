@@ -3,10 +3,11 @@
     "spawn_small_enemies",
     "spawn_big_enemies",
     "item_pickup",
-    "get_player_entity",
+    "getPlayerEntity",
     "collision_trigger",
     "spawn_revival_altar",
     "release",
-    "init"
+    "init",
+    "findPolymorphedPlayers"
   ]
 }

@@ -1,7 +1,7 @@
 dofile_once("mods/holy_mountain_revive_point/files/scripts/lib/utilities.lua")
 
 local executed_count = ComponentGetValue2(GetUpdatedComponentID(), "mTimesExecuted") + 1
-local player_entity_id = get_player_entity()
+local player_entity_id = getPlayerEntity()
 
 function init(entity)
   -- 点滅用alphaリセット
