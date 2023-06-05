@@ -1,5 +1,6 @@
 local Json = dofile_once("mods/holy_mountain_revive_point/files/scripts/lib/jsonlua/json.lua")
 local GLOBALS = dofile_once("mods/holy_mountain_revive_point/files/scripts/global_values.lua")
+local revival_icon = dofile_once("mods/holy_mountain_revive_point/files/scripts/revival/revival_icon.lua")
 
 local function override_holy_mountain_biome(revive_position_x, revive_position_y)
   -- 一番近い聖なる山に通り抜けポイントを作る
@@ -55,6 +56,7 @@ local function revived(revive_target_entity_id, revive_position)
   GamePlaySound("data/audio/Desktop/misc.bank", "misc/teleport_use", revive_position.x, revive_position.y)
   GameScreenshake(130)
   EntityLoad("mods/holy_mountain_revive_point/files/entities/revival_point_effect.xml", revive_position.x, revive_position.y)
+  revival_icon.remove_ui_icon(revive_target_entity_id)
 end
 
 local function revive(revive_target_entity_id)
@@ -69,6 +71,8 @@ local function revive(revive_target_entity_id)
       ComponentSetValue2(damage_model, "wait_for_kill_flag_on_death", false)
       return
     end
+
+    GlobalsSetValue(GLOBALS.KEYS.HAS_BEEN_POLY_REVIVE, "1")
 
     local revive_position = Json.decode(json)
     revived(revive_target_entity_id, revive_position)

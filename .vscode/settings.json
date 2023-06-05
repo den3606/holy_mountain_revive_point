@@ -9,6 +9,10 @@
     "release",
     "init",
     "findPolymorphedPlayers",
-    "print_error"
+    "print_error",
+    "GlobalsSetValue",
+    "GamePrintImportant",
+    "GlobalsGetValue",
+    "EntityLoad"
   ]
 }

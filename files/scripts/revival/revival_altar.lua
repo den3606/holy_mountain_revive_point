@@ -1,6 +1,6 @@
 local GLOBALS = dofile_once("mods/holy_mountain_revive_point/files/scripts/global_values.lua")
-
 local Json = dofile_once("mods/holy_mountain_revive_point/files/scripts/lib/jsonlua/json.lua")
+local revival_icon = dofile_once("mods/holy_mountain_revive_point/files/scripts/revival/revival_icon.lua")
 
 function item_pickup(entity_item, entity_who_picked, item_name)
   local pos_x, pos_y = EntityGetTransform(entity_item)
@@ -10,9 +10,7 @@ function item_pickup(entity_item, entity_who_picked, item_name)
   }))
 
   GamePrintImportant("$holy_mountain_end_point_swore_to_god")
-
-  local pos = Json.decode(GlobalsGetValue(GLOBALS.KEYS.ENCODED_POSITION))
-  print(pos.x, pos.y)
+  revival_icon.add_ui_icon(entity_who_picked)
 
   -- spawn a new one
   EntityKill(entity_item)

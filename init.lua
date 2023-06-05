@@ -1,6 +1,6 @@
 dofile_once("mods/holy_mountain_revive_point/files/scripts/lib/utilities.lua")
 local GLOBALS = dofile_once("mods/holy_mountain_revive_point/files/scripts/global_values.lua")
-local revival_alter_actions = dofile_once("mods/holy_mountain_revive_point/files/scripts/player/revival_alter_actions.lua")
+local revival_icon = dofile_once("mods/holy_mountain_revive_point/files/scripts/revival/revival_icon.lua")
 
 print("===========")
 print("REVIVE POIT mod init")
@@ -17,6 +17,13 @@ function OnPlayerSpawned(player_id)
 end
 
 function OnWorldPreUpdate()
+  local player_entity_id = EntityGetWithTag("player_unit")[1]
+  local has_been_polymorphed_revive = tonumber(GlobalsGetValue(GLOBALS.KEYS.HAS_BEEN_POLY_REVIVE, "0")) == 1
+  if player_entity_id ~= nil and has_been_polymorphed_revive then
+    revival_icon.remove_ui_icon(player_entity_id)
+    GlobalsSetValue(GLOBALS.KEYS.HAS_BEEN_POLY_REVIVE, "0")
+  end
+
   local polymorphed_player_entity_id = FindPolymorphedPlayer()
 
   if polymorphed_player_entity_id == nil then
