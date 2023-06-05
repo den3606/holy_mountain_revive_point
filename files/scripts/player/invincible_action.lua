@@ -22,9 +22,12 @@ local function invincible(executed_count)
 
   for _, damage_model in ipairs(EntityGetComponent(player_entity_id, "DamageModelComponent") or {}) do
 
+    -- NOTE:132の詳細は revive_alter_actions:52を参照
     if executed_count == 132 then
       -- 無敵OFF
       ComponentSetValue2(damage_model, "wait_for_kill_flag_on_death", false)
+      local player_sprite_component_id = EntityGetFirstComponent(player_entity_id, "SpriteComponent", "character")
+      ComponentSetValue2(player_sprite_component_id, "alpha", 1)
     end
 
     local max_hp = ComponentGetValue2(damage_model, "max_hp")
@@ -32,6 +35,5 @@ local function invincible(executed_count)
   end
 end
 
-invincible(executed_count)
-
 flash_effect()
+invincible(executed_count)
