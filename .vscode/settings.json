@@ -8,6 +8,7 @@
     "spawn_revival_altar",
     "release",
     "init",
-    "findPolymorphedPlayers"
+    "findPolymorphedPlayers",
+    "print_error"
   ]
 }

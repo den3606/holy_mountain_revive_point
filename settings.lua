@@ -19,7 +19,7 @@ mod_settings =
     id = "REVIVAL_ALTAR_COST_TYPE",
     ui_name = "COST_TYPE",
     ui_description = "You can change the type of cost increase\nAddition: 100 -> 200 -> 300 -> 400...\nExponetiation(like perk_reroller): 100 -> 200 -> 400 -> 800...",
-    value_default = "Addition",
+    value_default = "addition",
     values = { {"addition","Addition"}, {"exponentiation","Exponentiation"}},
     scope = MOD_SETTING_SCOPE_NEW_GAME,
   },
