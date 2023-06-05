@@ -1,21 +1,18 @@
-dofile_once("mods/holy_mountain_revive_point/files/scripts/lib/utilities.lua")
+local GLOBALS = dofile_once("mods/holy_mountain_revive_point/files/scripts/global_values.lua")
 
-local function register_revive_point(entity_item, pos_x, pos_y)
-  GlobalsSetValue("holy_mountain_revive_point.is_saved", "1")
-  GlobalsSetValue("holy_mountain_revive_point.newest_revive_pos_x", tostring(pos_x))
-  GlobalsSetValue("holy_mountain_revive_point.newest_revive_pos_y", tostring(pos_y - 1))
-end
+local Json = dofile_once("mods/holy_mountain_revive_point/files/scripts/lib/jsonlua/json.lua")
 
 function item_pickup(entity_item, entity_who_picked, item_name)
   local pos_x, pos_y = EntityGetTransform(entity_item)
+  GlobalsSetValue(GLOBALS.KEYS.ENCODED_POSITION, Json.encode({
+    x = pos_x,
+    y = pos_y - 1,
+  }))
 
-  -- revive counting
-  local revive_count = tonumber(GlobalsGetValue("holy_mountain_revive_point.revive_count", "0"))
-  GlobalsSetValue("holy_mountain_revive_point.revive_count", tostring(revive_count + 1))
+  GamePrintImportant("$holy_mountain_end_point_swore_to_god")
 
-  GamePrintImportant("You swore to God")
-
-  register_revive_point(entity_item, pos_x, pos_y)
+  local pos = Json.decode(GlobalsGetValue(GLOBALS.KEYS.ENCODED_POSITION))
+  print(pos.x, pos.y)
 
   -- spawn a new one
   EntityKill(entity_item)

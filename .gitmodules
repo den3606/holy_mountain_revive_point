@@ -1,0 +1,3 @@
+[submodule "files/scripts/lib/jsonlua"]
+	path = files/scripts/lib/jsonlua
+	url = git@github.com:rxi/json.lua.git

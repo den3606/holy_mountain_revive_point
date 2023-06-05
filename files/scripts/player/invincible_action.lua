@@ -1,13 +1,13 @@
 dofile_once("mods/holy_mountain_revive_point/files/scripts/lib/utilities.lua")
 
 local executed_count = ComponentGetValue2(GetUpdatedComponentID(), "mTimesExecuted") + 1
-local player_entity_id = getPlayerEntity()
+local player_entity_id = GetPlayerEntity()
 
-function init(entity)
+function init(entity_id)
   -- 点滅用alphaリセット
-  ComponentSetValue2(entity, "alpha", 1)
+  ComponentSetValue2(entity_id, "alpha", 1)
   -- 無敵ON
-  for _, damage_model in ipairs(EntityGetComponent(player_entity_id, "DamageModelComponent") or {}) do
+  for _, damage_model in ipairs(EntityGetComponent(entity_id, "DamageModelComponent") or {}) do
     ComponentSetValue2(damage_model, "wait_for_kill_flag_on_death", true)
   end
 end
@@ -22,7 +22,7 @@ local function invincible(executed_count)
 
   for _, damage_model in ipairs(EntityGetComponent(player_entity_id, "DamageModelComponent") or {}) do
 
-    if executed_count == 24 then
+    if executed_count == 132 then
       -- 無敵OFF
       ComponentSetValue2(damage_model, "wait_for_kill_flag_on_death", false)
     end
