@@ -10,7 +10,6 @@ local function calc_cost()
   end
 end
 
-
 local entity_id = GetUpdatedEntityID()
 local itemcost_comp = EntityGetFirstComponent(entity_id, "ItemCostComponent")
 local costsprite_comp = EntityGetComponent(entity_id, "SpriteComponent", "shop_cost")
@@ -41,4 +40,4 @@ if (costsprite_comp ~= nil) then
   end
 end
 
-ComponentSetValue(itemcost_comp, "cost", tostring(cost))
+ComponentSetValue2(itemcost_comp, "cost", cost)
