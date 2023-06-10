@@ -4,10 +4,13 @@ local revival_icon = dofile_once("mods/holy_mountain_revive_point/files/scripts/
 
 function item_pickup(entity_item, entity_who_picked, item_name)
   local pos_x, pos_y = EntityGetTransform(entity_item)
-  GlobalsSetValue(GLOBALS.KEYS.ENCODED_POSITION, Json.encode({
+
+  local json = string.gsub(Json.encode({
     x = pos_x,
     y = pos_y - 1,
-  }))
+  }), '"', "'")
+
+  GlobalsSetValue(GLOBALS.KEYS.ENCODED_POSITION, json)
 
   GamePrintImportant("$holy_mountain_end_point_swore_to_god")
   revival_icon.add_ui_icon(entity_who_picked)

@@ -44,7 +44,7 @@ local function revived(revive_target_entity_id, revive_position)
     EntityKill(EntityGetWithName("workshop_altar"))
   end
 
-  -- 無敵時間さん？！(5f * 132 = 600f = 11s)
+  -- 無敵時間(5f * 132 = 600f = 11s)
   EntityAddComponent2(revive_target_entity_id, "LuaComponent", {
     script_source_file = "mods/holy_mountain_revive_point/files/scripts/player/invincible_action.lua",
     call_init_function = true,
@@ -74,7 +74,7 @@ local function revive(revive_target_entity_id)
 
     GlobalsSetValue(GLOBALS.KEYS.HAS_BEEN_POLY_REVIVE, "1")
 
-    local revive_position = Json.decode(json)
+    local revive_position = Json.decode(string.gsub(json, "'", '"'))
     revived(revive_target_entity_id, revive_position)
   end
 end
